@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Form, Input, Grid, Label, Icon } from 'semantic-ui-react';
-import { TxButton } from './substrate-lib/components';
+import React, { useState } from 'react'
+import { Form, Input, Grid, Label, Icon } from 'semantic-ui-react'
+import { TxButton } from './substrate-lib/components'
 
 export default function Main (props) {
-  const [status, setStatus] = useState(null);
-  const [formState, setFormState] = useState({ addressTo: null, amount: 0 });
-  const { accountPair } = props;
+  const [status, setStatus] = useState(null)
+  const [formState, setFormState] = useState({ addressTo: null, amount: 0 })
+  const { accountPair } = props
 
   const onChange = (_, data) =>
-    setFormState(prev => ({ ...prev, [data.state]: data.value }));
+    setFormState(prev => ({ ...prev, [data.state]: data.value }))
 
-  const { addressTo, amount } = formState;
+  const { addressTo, amount } = formState
 
   return (
     <Grid.Column width={8}>
@@ -19,14 +19,10 @@ export default function Main (props) {
         <Form.Field>
           <Label basic color='teal'>
             <Icon name='hand point right' />
-            1 Unit = 1000000000000&nbsp;
-          </Label>
-          <Label basic color='teal' style={{ marginLeft: 0, marginTop: '.5em' }}>
-            <Icon name='hand point right' />
-            Transfer more than the existential amount for account with 0 balance
+            1 Unit = 1000000000000
           </Label>
         </Form.Field>
-
+        <Form.Field>Transfer more than the existential amount for account with 0 balance</Form.Field>
         <Form.Field>
           <Input
             fluid
@@ -63,5 +59,5 @@ export default function Main (props) {
         <div style={{ overflowWrap: 'break-word' }}>{status}</div>
       </Form>
     </Grid.Column>
-  );
+  )
 }

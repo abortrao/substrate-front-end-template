@@ -18,7 +18,6 @@
     "@polkadot/api": "^5.3.2",
     "@polkadot/extension-dapp": "^0.39.1",
     "@polkadot/keyring": "^7.1.1",
-    "@polkadot/networks": "^7.1.1",
     "@polkadot/types": "^5.3.2",
     "@polkadot/ui-keyring": "^0.84.3",
     "@polkadot/ui-settings": "^0.84.3",
@@ -27,9 +26,9 @@
     "prop-types": "^15.7.2",
     "query-string": "^6.13.5",
     "react": "^16.14.0",
-    "react-copy-to-clipboard": "^5.0.3",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.14.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "4.0.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3"
   },
@@ -37,6 +36,7 @@
     "@babel/core": "^7.14.3",
     "babel-preset-env": "^1.7.0",
     "eslint": "^7.20.0",
+    "eslint-config-react-app": "^6.0.0",
     "eslint-config-semistandard": "^15.0.1",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
@@ -51,7 +51,7 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "semistandard"
+      "standard"
     ],
     "plugins": [
       "only-warn"
@@ -81,14 +81,5 @@
     "substrate",
     "substrate-ui",
     "polkadot-js"
-  ],
-  "jest": {
-    "modulePathIgnorePatterns": [
-      "<rootDir>/src/__tests__/mock.js"
-    ],
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/src/__tests__/mock.js"
-    }
-  }
+  ]
 }
