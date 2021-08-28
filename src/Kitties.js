@@ -32,6 +32,9 @@ export default function Kitties (props) {
           api.query.kittiesModule.kittiesOwnerMap(index).then(value => {
             kittyOwner = JSON.stringify(value)
             console.log('kitty info: ', index, kittyDna, kittyOwner)
+            if (kittyDna == '' || kittyOwner == '') {
+              return
+            }
             kitties.push({
               id: index,
               dna: kittyDna,
@@ -75,7 +78,7 @@ export default function Kitties (props) {
     <Form style={{ margin: '1em 0' }}>
       <Form.Field style={{ textAlign: 'center' }}>
         <TxButton
-          accountPair={accountPair} label='创建小毛孩（等6秒请刷新一下页面,就能看到创建的小猫,react不会)' type='SIGNED-TX' setStatus={setStatus}
+          accountPair={accountPair} label='创建小毛孩（等6秒请刷新一下页面,就能看到创建的小猫,react不太会(0!_!0))' type='SIGNED-TX' setStatus={setStatus}
           attrs={{
             palletRpc: 'kittiesModule',
             callable: 'create',
