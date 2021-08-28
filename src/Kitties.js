@@ -7,7 +7,10 @@ import { TxButton } from './substrate-lib/components'
 import KittyCards from './KittyCards'
 
 export default function Kitties (props) {
-  const { api, keyring } = useSubstrate()
+  const {
+    api,
+    keyring
+  } = useSubstrate()
   const { accountPair } = props
 
   const [kitties, setKitties] = useState([])
@@ -19,6 +22,24 @@ export default function Kitties (props) {
     //   - 共有多少只猫咪
     //   - 每只猫咪的主人是谁
     //   - 每只猫咪的 DNA 是什么，用来组合出它的形态
+
+    api.query.kittiesModule.kittiesCount().then(value => {
+      for (let index = 0; index < value; index++) {
+        let kittyDna = ''
+        let kittyOwner = ''
+        api.query.kittiesModule.kittiesIdMap(index).then(value => {
+
+          kittyDna = JSON.stringify(value)
+          api.query.kittiesModule.kittiesOwnerMap(index).then(value => {
+            kittyOwner = JSON.stringify(value)
+            console.log('kitty info: ', index, kittyDna, kittyOwner)
+            kitties.push({id:index,dna:kittyDna,owner:kittyOwner});
+          })
+        })
+        setKitties(kitties)
+      }
+    })
+
   }
 
   const populateKitties = () => {

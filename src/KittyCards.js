@@ -48,7 +48,7 @@ const TransferModal = props => {
 const KittyCard = props => {
   const { kitty, accountPair, setStatus } = props
   const { id = null, dna = null, owner = null } = kitty
-  const displayDna = dna && dna.join(', ')
+  const displayDna = dna
   const displayId = id === null ? '' : (id < 10 ? `0${id}` : id.toString())
   const isSelf = accountPair.address === kitty.owner
 
