@@ -28,10 +28,10 @@ export default function Kitties (props) {
       for (let index = 1; index <= currentIndex; index++) {
         let kittyDna = ''
         let kittyOwner = ''
-        api.query.kittiesModule.kittiesIdMap(index).then(value => {
-          kittyDna = JSON.stringify(value)
-          api.query.kittiesModule.kittiesOwnerMap(index).then(value => {
-            kittyOwner = JSON.stringify(value)
+        api.query.kittiesModule.kittiesIdMap(index).then(dna => {
+          kittyDna = dna.toString()
+          api.query.kittiesModule.kittiesOwnerMap(index).then(owner => {
+            kittyOwner = owner.toString()
             // console.log('kitty info: ', index, kittyDna, kittyOwner)
             if (kittyDna == '' || kittyOwner == '') {
               return
@@ -52,16 +52,16 @@ export default function Kitties (props) {
     })
 
     api.query.kittiesModule.kittiesCount(index => {
-      if (index==0){
+      if (index == 0) {
         return
       }
       let newKitties = []
       let kittyDna = ''
       let kittyOwner = ''
       api.query.kittiesModule.kittiesIdMap(index.toString()).then(value => {
-        kittyDna = JSON.stringify(value)
+        kittyDna = value.toString()
         api.query.kittiesModule.kittiesOwnerMap(index.toString()).then(value => {
-          kittyOwner = JSON.stringify(value)
+          kittyOwner = value.toString()
           if (kittyDna == '' || kittyOwner == '') {
             return
           }

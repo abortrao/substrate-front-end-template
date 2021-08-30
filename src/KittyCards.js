@@ -20,6 +20,9 @@ const TransferModal = props => {
     setOpen(false)
   }
 
+
+
+
   return <Modal onClose={() => setOpen(false)} onOpen={() => setOpen(true)} open={open}
     trigger={<Button basic color='blue'>转让</Button>}>
     <Modal.Header>毛孩转让</Modal.Header>
@@ -68,7 +71,7 @@ const KittyCard = props => {
         </p>
       </Card.Description>
     </Card.Content>
-    <Card.Content extra style={{ textAlign: 'center' }}>{ owner === accountPair.address
+    <Card.Content extra style={{ textAlign: 'center' }}>{ owner.toString() === accountPair.address.toString()
       ? <TransferModal kitty={kitty} accountPair={accountPair} setStatus={setStatus}/>
       : ''
     }</Card.Content>
