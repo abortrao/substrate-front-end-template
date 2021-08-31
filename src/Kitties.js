@@ -37,7 +37,7 @@ export default function Kitties (props) {
               return
             }
             kitties.push({
-              id: index,
+              id: parseInt(index),
               dna: kittyDna,
               owner: kittyOwner
             })
@@ -66,7 +66,7 @@ export default function Kitties (props) {
             return
           }
           newKitties.push({
-            id: index,
+            id: parseInt(index),
             dna: kittyDna,
             owner: kittyOwner
           })
