@@ -23,8 +23,9 @@ export default function Kitties (props) {
     //   - 每只猫咪的主人是谁
     //   - 每只猫咪的 DNA 是什么，用来组合出它的形态
 
-    // todo js不太熟悉,重心没在这上面
+    // todo react 不太熟悉,重心没在这上面,实现基本功能
     api.query.kittiesModule.kittiesCount().then(currentIndex => {
+
       for (let index = 1; index <= currentIndex; index++) {
         let kittyDna = ''
         let kittyOwner = ''
@@ -44,11 +45,14 @@ export default function Kitties (props) {
             if (index == currentIndex) {
               // setKitties(kitties)
               updateData(kitties, kitties)
+              sub_kitty(currentIndex)
             }
           })
         })
 
       }
+
+
     })
 
     api.query.kittiesModule.kittiesCount(index => {
@@ -71,8 +75,31 @@ export default function Kitties (props) {
             owner: kittyOwner
           })
           updateData(kitties, newKitties)
+          sub_kitty(index)
         })
       })
+
+    })
+
+  }
+
+  function sub_kitty (index) {
+    let ids = []
+    for (let i = 1; i <= index; i++) {
+      ids.push(i)
+    }
+    api.query.kittiesModule.kittiesOwnerMap.multi(ids, (owners) => {
+      let newKitties = []
+      for (let i in owners) {
+        let kitty = kitties[i]
+        newKitties.push({
+          id: kitty.id.toString(),
+          dna: kitty.dna,
+          owner: owners[i].toString()
+        })
+
+      }
+      setKitties(newKitties)
     })
 
   }
